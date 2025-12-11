@@ -9,6 +9,7 @@ mod value;
 ///
 /// This maps component names to the `TextBoxComponentValue` that will be
 /// substituted during rendering.
+#[derive(Clone)]
 pub struct TextBoxRender {
     /// Mapping of component names to their assigned values.
     pub map: HashMap<String, TextBoxComponentValue>
