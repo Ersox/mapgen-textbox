@@ -23,6 +23,7 @@ mod render;
 ///
 /// A `TextBox` acts as a declarative template, allowing you to insert text and
 /// images into predefined slots to render an image.
+#[derive(Clone)]
 pub struct TextBox {
     /// The template that components are rendered onto.
     pub template: DynamicImage,

@@ -4,6 +4,7 @@ use image::DynamicImage;
 ///
 /// Components may expect either text or an image, and this enum is used to
 /// store whichever type of value the caller provides.
+#[derive(Clone)]
 pub enum TextBoxComponentValue {
     /// A textual value for a text component.
     Text(String),

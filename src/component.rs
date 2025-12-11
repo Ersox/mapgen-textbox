@@ -1,15 +1,18 @@
 use crate::{imagearea::ImageArea, textarea::TextArea};
 
+#[derive(Clone)]
 pub struct TextComponent {
     pub name: String,
     pub area: TextArea
 }
 
+#[derive(Clone)]
 pub struct ImageComponent {
     pub name: String,
     pub area: ImageArea
 }
 
+#[derive(Clone)]
 pub enum TextBoxComponent {
     Text(TextComponent),
     Image(ImageComponent)

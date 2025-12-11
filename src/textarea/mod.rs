@@ -8,6 +8,7 @@ mod align;
 mod draw;
 
 /// A configurable text drawing area with wrapping and alignment.
+#[derive(Clone)]
 pub struct TextArea {
     /// Starting X coordinate of the text box.
     pub x: u32,
