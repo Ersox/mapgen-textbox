@@ -23,6 +23,11 @@ impl TextBoxRender {
         }
     }
 
+    /// Extends this `TextBoxRender` with all entries from another render.
+    pub fn extend(&mut self, render: TextBoxRender) {
+        self.map.extend(render.map);
+    }
+
     /// Inserts a text value for the component with the given name.
     ///
     /// Returns `self` to support method chaining.
