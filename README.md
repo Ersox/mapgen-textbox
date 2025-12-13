@@ -24,6 +24,7 @@ let text_box = TextBox::new(template)
     .add_text_component("name", TextArea::new(
         (0, 200),
         400,
+        BLACK,
         FontArc::try_from_slice(include_bytes!("path/to/font.ttf"))?,
         48.0,
         Align::Center

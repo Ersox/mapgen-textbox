@@ -1,4 +1,5 @@
 use ab_glyph::{FontArc, PxScale};
+use pixelset::Color;
 
 pub use crate::textarea::align::Align;
 
@@ -22,6 +23,8 @@ pub struct TextArea {
     pub font: FontArc,
     /// Horizontal alignment of each line.
     pub align: Align,
+    /// Color to draw the text in.
+    pub color: Color
 }
 
 impl TextArea {
@@ -29,6 +32,7 @@ impl TextArea {
     pub fn new(
         (x, y): (u32, u32), 
         max_width: u32, 
+        color: Color,
         font: FontArc, 
         scale: impl Into<PxScale>,
         align: Align
@@ -37,6 +41,7 @@ impl TextArea {
             x,
             y,
             max_width,
+            color,
             font,
             scale: scale.into(),
             align

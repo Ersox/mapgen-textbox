@@ -28,7 +28,7 @@ impl TextArea {
 
             draw_text_mut(
                 image, 
-                BLACK.0, 
+                self.color.0, 
                 x as i32, y as i32, 
                 self.scale, 
                 &self.font, 
