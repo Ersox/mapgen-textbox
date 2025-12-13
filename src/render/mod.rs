@@ -1,6 +1,6 @@
 use std::{collections::HashMap, error::Error};
 use image::DynamicImage;
-use crate::{TextBox, component::TextBoxComponent, render::value::TextBoxComponentValue};
+use crate::{TextBox, component::TextBoxComponent, error::TextBoxRenderError, render::value::TextBoxComponentValue};
 
 mod value;
 
@@ -67,12 +67,22 @@ impl TextBox {
             match component {
                 TextBoxComponent::Text(component) => {
                     let value = value.as_text()
-                        .ok_or("Misalignment")?;
+                        .ok_or(                    
+                            TextBoxRenderError::ComponentTypeMismatch {
+                                name: name.clone(),
+                                expected: "text"
+                            }
+                        )?;
                     component.area.draw(&mut image, &value);
                 },
                 TextBoxComponent::Image(component) => {
                     let value = value.as_image()
-                        .ok_or("Misalignment")?;
+                        .ok_or(                    
+                            TextBoxRenderError::ComponentTypeMismatch {
+                                name: name.clone(),
+                                expected: "image"
+                            }
+                        )?;
                     component.area.overlay(&mut image, &value);
                 }
             }

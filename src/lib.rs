@@ -1,7 +1,5 @@
-use std::error::Error;
 use image::DynamicImage;
-
-use crate::{component::{ImageComponent, TextBoxComponent, TextComponent}, imagearea::ImageArea, textarea::TextArea};
+use crate::{component::{ImageComponent, TextBoxComponent, TextComponent}, error::ComponentNotFoundError, imagearea::ImageArea, textarea::TextArea};
 
 pub use crate::render::TextBoxRender;
 
@@ -10,6 +8,7 @@ pub mod imagearea;
 
 mod component;
 mod render;
+mod error;
 
 /// A layout container consisting of named text and image components that
 /// can be applied to a template.
@@ -59,10 +58,10 @@ impl TextBox {
     }
 
     /// Retrieves a reference to a component by its name.
-    pub fn component(&self, name: &str) -> Result<&TextBoxComponent, Box<dyn Error>> {
+    pub fn component(&self, name: &str) -> Result<&TextBoxComponent, ComponentNotFoundError> {
         let component = self.components.iter()
             .find(|comp| comp.name() == name)
-            .ok_or(format!("Could not find component {}", name))?;
+        .ok_or(ComponentNotFoundError::new(name))?;
 
         Ok(component)
     }
