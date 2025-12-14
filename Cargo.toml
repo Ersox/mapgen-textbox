@@ -1,11 +1,11 @@
 [package]
 name = "mapgen-textbox"
-version = "0.4.2"
+version = "0.4.3"
 edition = "2024"
 
 [dependencies]
 ab_glyph = "0.2.32"
 image = "0.25.9"
 imageproc = "0.25.0"
-pixelset = { version = "0.2.0", path = "../pixelset" }
+pixelset = "0.2.0"
 thiserror = "2.0.17"
